@@ -1,4 +1,4 @@
 node_modules/
-backups/
+backups/*
 docker-compose.yaml
 Dockerfile

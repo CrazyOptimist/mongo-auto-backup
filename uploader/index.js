@@ -8,6 +8,6 @@ module.exports = config => {
     case 'aws':
       return s3Uploader;
     default:
-      console.log('Sorry, no valid configurations given');
+      console.log('Sorry, you need to choose storage type first.');
   }
 }

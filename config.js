@@ -7,6 +7,8 @@ const config = {
   app: {
     storage: process.env.APP_STORAGE || 'local',
     retension_weeks: process.env.RETENSION_WEEKS || 4,
+    timezone: process.env.APP_TIMEZONE || "America/Chicago",
+    cron_expression: process.env.CRON_EXPRESSION || "0 0 2 * *",
     local_backup_dir: `${__dirname}/backups`
   },
   aws: {

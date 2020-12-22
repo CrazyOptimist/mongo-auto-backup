@@ -43,4 +43,4 @@ jspm_packages/
 .pnp.*
 
 # backup data
-backups/
+backups/*
