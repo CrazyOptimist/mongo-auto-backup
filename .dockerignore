@@ -1,0 +1,4 @@
+node_modules/
+backups/
+docker-compose.yaml
+Dockerfile

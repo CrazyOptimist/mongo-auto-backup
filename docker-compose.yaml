@@ -1,0 +1,7 @@
+version: '3.8'
+services:
+  mongo_backup_service:
+    container_name: backup_container
+    build: .
+    volumes:
+      - "./backups:/app/backups"
