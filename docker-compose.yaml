@@ -5,3 +5,4 @@ services:
     build: .
     volumes:
       - "./backups:/app/backups"
+    command: ["npm", "start"]

@@ -3,6 +3,8 @@ Universal Backup Micro-Service for MongoDB
 
 ## Deploy As Service
 ```bash
+mkdir backups
+npm install --global pm2@latest
 pm2 start index.js
 ```
 

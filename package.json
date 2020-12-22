@@ -12,5 +12,9 @@
     "cron": "^1.8.2",
     "dotenv": "^8.2.0",
     "lodash": "^4.17.20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/crazyoptimist/mongo-auto-backup.git"
   }
 }
