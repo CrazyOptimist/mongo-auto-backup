@@ -3,7 +3,7 @@ Universal Backup Micro-Service for MongoDB
 
 ## Deploy As Service
 ```bash
-pm2 start index
+pm2 start index.js
 ```
 
 ## Using Docker
