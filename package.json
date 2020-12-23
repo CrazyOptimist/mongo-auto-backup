@@ -1,7 +1,7 @@
 {
   "name": "mongo-auto-backup",
   "version": "1.0.0",
-  "description": "Automatically manage mongodb backup",
+  "description": "Manages mongodb backup automatically",
   "main": "index.js",
   "scripts": {
     "start": "node index"

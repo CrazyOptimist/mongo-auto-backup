@@ -2,11 +2,11 @@ const fs = require('fs');
 const _ = require('lodash');
 const exec = require('child_process').exec;
 
-exports.perform_backup = (config, newFileName) => {
+exports.performBackup = (config, newFileName) => {
   let cmd = 
     'mongodump' +
-    ` --uri="${config.db.mongo_uri}"` +
-    ` --archive=${config.app.local_backup_dir}/${newFileName}.gz` +
+    ` --uri="${config.db.mongoUri}"` +
+    ` --archive=${config.app.localBackupDir}/${newFileName}.gz` +
     ' --gzip' +
     ' --quiet';
 
@@ -21,38 +21,42 @@ exports.perform_backup = (config, newFileName) => {
 /**
  * This function will be used only when APP_STORAGE=local
  */
-exports.remove_old_backups = config => {
-  fs.readdirSync(config.app.local_backup_dir)
+exports.removeOldBackups = config => {
+  fs.readdirSync(config.app.localBackupDir)
     .forEach(fileName => {
       let oldTimestamp = parseInt(_.split(fileName, '-', 1)[0]);
       let newTimestamp = Date.now();
       let weeksDifference = Math.floor((newTimestamp - oldTimestamp)/1000/60/60/24/7);
-      if (weeksDifference > config.app.retension_weeks)
-        fs.unlinkSync(`${config.app.local_backup_dir}/${fileName}`);
+      if (weeksDifference > config.app.retensionWeeks)
+        fs.unlinkSync(`${config.app.localBackupDir}/${fileName}`);
     });
 }
 
 /**
  * This function will be used for APP_STORAGE types other than 'local'
  */
-exports.remove_all_backups = config => {
-  fs.readdirSync(config.app.local_backup_dir)
+exports.removeAllBackups = config => {
+  fs.readdirSync(config.app.localBackupDir)
     .forEach(fileName => {
-      fs.unlinkSync(`${config.app.local_backup_dir}/${fileName}`);
+      fs.unlinkSync(`${config.app.localBackupDir}/${fileName}`);
     });
 }
 
 /**
  * Restore mongodb using hand-picked backup file inside the '/backups' directory.
  * @param {string} fileName Name of the backup file inside the '/backups' directory, which will be restored.
+ * @param {string} nsFrom Name of the original db
+ * @param {string} nsTo Name of the target db
  */
-exports.perform_restore = (config, fileName) => {
+exports.performRestore = (config, fileName, nsFrom, nsTo) => {
 
   let cmd = 
     'mongorestore' +
-    ` --uri="${config.db.mongo_uri}"` +
-    ` --archive=${config.app.local_backup_dir}/${fileName}` +
+    ` --uri="${config.db.mongoUri}"` +
+    ` --archive=${config.app.localBackupDir}/${fileName}` +
     ' --gzip' +
+    ` --nsFrom ${nsFrom}` +
+    ` --nsTo ${nsTo}` +
     ' --quiet';
 
   exec(cmd, (error, stdout, stderr) => {

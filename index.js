@@ -4,7 +4,7 @@ const utils = require('./utils');
 const CronJob = require('cron').CronJob;
 
 const job = new CronJob(
-  config.app.cron_expression,
+  config.app.cronExpression,
   () => {
     let fileName = utils.getNewFileName();
     uploader.perform_backup(config, fileName);
