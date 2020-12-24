@@ -55,8 +55,8 @@ exports.performRestore = (config, fileName, nsFrom, nsTo) => {
     ` --uri="${config.db.mongoUri}"` +
     ` --archive=${config.app.localBackupDir}/${fileName}` +
     ' --gzip' +
-    ` --nsFrom ${nsFrom}` +
-    ` --nsTo ${nsTo}` +
+    ` --nsFrom ${nsFrom}.*` +
+    ` --nsTo ${nsTo}.*` +
     ' --quiet';
 
   exec(cmd, (error, stdout, stderr) => {
