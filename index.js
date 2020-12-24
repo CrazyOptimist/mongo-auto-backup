@@ -7,8 +7,8 @@ const job = new CronJob(
   config.app.cronExpression,
   () => {
     let fileName = utils.getNewFileName();
-    uploader.perform_backup(config, fileName);
-    uploader.remove_old_backups(config);
+    uploader.performBackup(config, fileName);
+    uploader.removeOldBackups(config);
   },
   null,
   true,
