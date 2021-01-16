@@ -9,7 +9,7 @@ const config = {
     retensionWeeks: process.env.RETENSION_WEEKS || 4,
     timezone: process.env.APP_TIMEZONE || "America/Chicago",
     cronExpression: process.env.CRON_EXPRESSION || "0 0 2 * *",
-    localBackupDir: `${__dirname}/backups`
+    localBackupDir: `${__dirname}/local_backups`
   },
   aws: {
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,

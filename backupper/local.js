@@ -3,7 +3,7 @@ const _ = require('lodash');
 const exec = require('child_process').exec;
 
 exports.performBackup = (config, newFileName) => {
-  let cmd = 
+  const cmd = 
     'mongodump' +
     ` --uri="${config.db.mongoUri}"` +
     ` --archive=${config.app.localBackupDir}/${newFileName}.gz` +
@@ -15,6 +15,7 @@ exports.performBackup = (config, newFileName) => {
       console.error(`exec error: ${error}`);
       return;
     }
+    console.log(stdout + stderr);
   });
 }
 
@@ -24,9 +25,9 @@ exports.performBackup = (config, newFileName) => {
 exports.removeOldBackups = config => {
   fs.readdirSync(config.app.localBackupDir)
     .forEach(fileName => {
-      let oldTimestamp = parseInt(_.split(fileName, '-', 1)[0]);
-      let newTimestamp = Date.now();
-      let weeksDifference = Math.floor((newTimestamp - oldTimestamp)/1000/60/60/24/7);
+      const oldTimestamp = parseInt(_.split(fileName, '-', 1)[0]);
+      const newTimestamp = Date.now();
+      const weeksDifference = Math.floor((newTimestamp - oldTimestamp)/1000/60/60/24/7);
       if (weeksDifference > config.app.retensionWeeks)
         fs.unlinkSync(`${config.app.localBackupDir}/${fileName}`);
     });
@@ -43,14 +44,14 @@ exports.removeAllBackups = config => {
 }
 
 /**
- * Restore mongodb using hand-picked backup file inside the '/backups' directory.
- * @param {string} fileName Name of the backup file inside the '/backups' directory, which will be restored.
+ * Restore mongodb using hand-picked backup file inside the '/local_backups' directory.
+ * @param {string} fileName Name of the backup file inside the '/local_backups' directory, which will be restored.
  * @param {string} nsFrom Name of the original db
  * @param {string} nsTo Name of the target db
  */
 exports.performRestore = (config, fileName, nsFrom, nsTo) => {
 
-  let cmd = 
+  const cmd = 
     'mongorestore' +
     ` --uri="${config.db.mongoUri}"` +
     ` --archive=${config.app.localBackupDir}/${fileName}` +
