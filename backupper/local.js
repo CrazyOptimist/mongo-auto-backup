@@ -1,6 +1,6 @@
-const fs = require('fs');
-const _ = require('lodash');
-const exec = require('child_process').exec;
+const fs =            require('fs');
+const _ =             require('lodash');
+const { execSync } =  require('child_process');
 
 exports.performBackup = (config, newFileName) => {
   const cmd = 
@@ -10,12 +10,11 @@ exports.performBackup = (config, newFileName) => {
     ' --gzip' +
     ' --quiet';
 
-  exec(cmd, (error, stdout, stderr) => {
+  execSync(cmd, (error, stdout, stderr) => {
     if (error) {
       console.error(`exec error: ${error}`);
       return;
     }
-    console.log(stdout + stderr);
   });
 }
 
@@ -60,7 +59,7 @@ exports.performRestore = (config, fileName, nsFrom, nsTo) => {
     ` --nsTo ${nsTo}.*` +
     ' --quiet';
 
-  exec(cmd, (error, stdout, stderr) => {
+  execSync(cmd, (error, stdout, stderr) => {
     if (error) {
       console.error(`exec error: ${error}`);
       return;
