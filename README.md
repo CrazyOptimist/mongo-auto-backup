@@ -39,9 +39,6 @@ node restore --file=xxx.gz --fromDB=aaa --toDB=bbb
 In the above example, `xxx.gz` is a backup file name inside the `local_backups` directory.  
 `aaa` is the original db name, `bbb` is the destination db name, which are optional.  
 
-## TODO
-Port to TS, because I love it!
-
 ## License
 **MIT**
 
