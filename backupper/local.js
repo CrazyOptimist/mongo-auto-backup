@@ -1,6 +1,6 @@
-const fs =            require('fs');
-const _ =             require('lodash');
-const { execSync } =  require('child_process');
+const fs =                    require('fs');
+const { execSync } =          require('child_process');
+const { getFileAgeInWeeks } = require('../utils');
 
 exports.performBackup = (config, newFileName) => {
   const cmd = 
@@ -18,27 +18,12 @@ exports.performBackup = (config, newFileName) => {
   });
 }
 
-/**
- * This function will be used only when APP_STORAGE=local
- */
 exports.removeOldBackups = config => {
   fs.readdirSync(config.app.localBackupDir)
     .forEach(fileName => {
-      const oldTimestamp = parseInt(_.split(fileName, '-', 1)[0]);
-      const newTimestamp = Date.now();
-      const weeksDifference = Math.floor((newTimestamp - oldTimestamp)/1000/60/60/24/7);
-      if (weeksDifference > config.app.retensionWeeks)
+      const fileAgeInWeeks = getFileAgeInWeeks(fileName);
+      if (fileAgeInWeeks > config.app.retensionWeeks)
         fs.unlinkSync(`${config.app.localBackupDir}/${fileName}`);
-    });
-}
-
-/**
- * This function will be used for APP_STORAGE types other than 'local'
- */
-exports.removeAllBackups = config => {
-  fs.readdirSync(config.app.localBackupDir)
-    .forEach(fileName => {
-      fs.unlinkSync(`${config.app.localBackupDir}/${fileName}`);
     });
 }
 
