@@ -1,6 +1,7 @@
 # MongoDB Automatic Backup System
 
-**Industry-Proven MongoDB Backup Microservice**  
+<p>Industry-Proven MongoDB Backup Microservice</p>
+
 ![](https://media.giphy.com/media/r3oOElXxOl0mVpoKzg/giphy.gif)
 
 This application creates a full backup of the MongoDB database.  
@@ -17,7 +18,6 @@ cp env.example .env
 `env.example` file itself is well documented.  
 
 ## Deployment
-
 ### Deploy Using PM2
 You need to have mongodb(version >= 3.6) installed on your operating system first.  
 ```bash
@@ -30,6 +30,14 @@ pm2 start index.js
 ```bash
 docker-compose up -d
 ```
+
+## Bonus: Restore
+Example command:
+```bash
+node restore --file=xxx.gz --fromDB=aaa --toDB=bbb
+```
+In the above example, `xxx.gz` is a backup file name inside the `local_backups` directory.  
+`aaa` is the original db name, `bbb` is the destination db name, which are optional.  
 
 ## TODO
 Port to TS, because I love it!

@@ -1,6 +1,6 @@
 {
   "name": "mongo-auto-backup",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Manages mongodb backup automatically",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,8 @@
     "aws-sdk": "^2.828.0",
     "cron": "^1.8.2",
     "dotenv": "^8.2.0",
-    "lodash": "^4.17.20"
+    "lodash": "^4.17.20",
+    "minimist": "^1.2.5"
   },
   "repository": {
     "type": "git",

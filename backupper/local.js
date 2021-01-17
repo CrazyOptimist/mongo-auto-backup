@@ -26,28 +26,3 @@ exports.removeOldBackups = config => {
         fs.unlinkSync(`${config.app.localBackupDir}/${fileName}`);
     });
 }
-
-/**
- * Restore mongodb using hand-picked backup file inside the '/local_backups' directory.
- * @param {string} fileName Name of the backup file inside the '/local_backups' directory, which will be restored.
- * @param {string} nsFrom Name of the original db
- * @param {string} nsTo Name of the target db
- */
-exports.performRestore = (config, fileName, nsFrom, nsTo) => {
-
-  const cmd = 
-    'mongorestore' +
-    ` --uri="${config.db.mongoUri}"` +
-    ` --archive=${config.app.localBackupDir}/${fileName}` +
-    ' --gzip' +
-    ` --nsFrom ${nsFrom}.*` +
-    ` --nsTo ${nsTo}.*` +
-    ' --quiet';
-
-  execSync(cmd, (error, stdout, stderr) => {
-    if (error) {
-      console.error(`exec error: ${error}`);
-      return;
-    }
-  });
-}
