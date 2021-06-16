@@ -1,6 +1,6 @@
 # MongoDB Automatic Backup System
 
-<p>Industry-Proven MongoDB Backup Microservice</p>
+<p>Industry-Proven MongoDB Backup Service</p>
 
 ![](https://media.giphy.com/media/r3oOElXxOl0mVpoKzg/giphy.gif)
 
