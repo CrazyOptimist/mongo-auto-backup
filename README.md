@@ -15,7 +15,7 @@ Configure your own dotenv file like so:
 ```bash
 cp env.example .env
 ```
-`env.example` file itself is well documented.  
+`env.example` file is self-explaining.  
 
 ## Deployment
 ### Deploy Using PM2
