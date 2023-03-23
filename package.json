@@ -15,7 +15,8 @@
     "cron": "^2.3.0",
     "dotenv": "^16.0.3",
     "lodash": "^4.17.21",
-    "minimist": "^1.2.8"
+    "minimist": "^1.2.8",
+    "husky": "^8.0.0"
   },
   "repository": {
     "type": "git",
@@ -23,8 +24,7 @@
   },
   "devDependencies": {
     "lint-staged": "^13.2.0",
-    "prettier": "^2.8.6",
-    "husky": "^8.0.0"
+    "prettier": "^2.8.6"
   },
   "lint-staged": {
     "*.{js,ts,json,md,html}": [

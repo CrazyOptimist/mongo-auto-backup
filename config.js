@@ -8,8 +8,9 @@ const config = {
     storage: process.env.APP_STORAGE || 'local',
     retensionWeeks: process.env.RETENSION_WEEKS || 4,
     timezone: process.env.APP_TIMEZONE || 'America/Chicago',
-    cronExpression: process.env.CRON_EXPRESSION || '0 0 2 * *',
     localBackupDir: `${__dirname}/local_backups`,
+    cronExpression: process.env.CRON_EXPRESSION || '0 0 2 * *',
+    runOnece: process.env.RUN_ONCE || false,
   },
   aws: {
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
