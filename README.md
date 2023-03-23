@@ -1,6 +1,6 @@
 # Backup MongoDB
 
-*AWS RDS-like backup service for mongo*
+_AWS RDS-like backup service for mongo_
 
 This application creates complete backups of a MongoDB database.
 

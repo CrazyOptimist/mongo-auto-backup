@@ -1,10 +1,7 @@
-const config =        require('./config');
-const {
-  performBackup,
-  removeOldBackups
-} =                   require('./backupper')(config);
-const utils =         require('./utils');
-const CronJob =       require('cron').CronJob;
+const config = require('./config');
+const { performBackup, removeOldBackups } = require('./backupper')(config);
+const utils = require('./utils');
+const CronJob = require('cron').CronJob;
 
 const job = new CronJob(
   config.app.cronExpression,
@@ -19,7 +16,7 @@ const job = new CronJob(
   },
   null,
   true,
-  config.app.timezone
+  config.app.timezone,
 );
 
 job.start();

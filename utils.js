@@ -6,7 +6,7 @@ const _ = require('lodash');
  */
 exports.getNewFileName = () => {
   const currentDate = new Date();
-  const newFileName = 
+  const newFileName =
     currentDate.getTime() +
     '-' +
     (currentDate.getMonth() + 1) +
@@ -15,7 +15,7 @@ exports.getNewFileName = () => {
     '-' +
     currentDate.getFullYear();
   return newFileName;
-}
+};
 
 /**
  * @param {string} fileName file name
@@ -23,6 +23,6 @@ exports.getNewFileName = () => {
 exports.getFileAgeInWeeks = (fileName) => {
   const oldTimestamp = parseInt(_.split(fileName, '-', 1)[0]);
   const newTimestamp = Date.now();
-  const weeksDifference = Math.floor((newTimestamp - oldTimestamp)/1000/60/60/24/7);
+  const weeksDifference = Math.floor((newTimestamp - oldTimestamp) / 1000 / 60 / 60 / 24 / 7);
   return weeksDifference;
-}
+};

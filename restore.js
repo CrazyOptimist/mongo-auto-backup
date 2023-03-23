@@ -1,6 +1,6 @@
-const { execSync } =  require('child_process');
-const parseArgs =     require('minimist');
-const config =        require('./config');
+const { execSync } = require('child_process');
+const parseArgs = require('minimist');
+const config = require('./config');
 
 /**
  * Restore mongodb using hand-picked backup file inside the '/local_backups' directory.
@@ -9,7 +9,7 @@ const config =        require('./config');
  * @param {string} toDB Optional, name of the target db
  */
 const performRestore = (config, fileName, fromDB, toDB) => {
-  let cmd = 
+  let cmd =
     'mongorestore' +
     ` --uri="${config.db.mongoUri}"` +
     ` --archive=${config.app.localBackupDir}/${fileName}` +
@@ -24,7 +24,7 @@ const performRestore = (config, fileName, fromDB, toDB) => {
       return;
     }
   });
-}
+};
 
 /**
  * example command format

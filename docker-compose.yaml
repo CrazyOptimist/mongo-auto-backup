@@ -4,5 +4,5 @@ services:
     container_name: backup_container
     build: .
     volumes:
-      - "./local_backups:/app/local_backups"
-    command: ["npm", "start"]
+      - './local_backups:/app/local_backups'
+    command: ['npm', 'start']
