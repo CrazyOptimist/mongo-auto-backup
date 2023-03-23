@@ -1,22 +1,26 @@
 {
-  "name": "mongo-auto-backup",
+  "name": "backup-mongo",
   "version": "1.2.0",
-  "description": "Manages mongodb backup automatically",
+  "description": "AWS RDS-like backup system for MongoDB",
   "main": "index.js",
   "scripts": {
-    "start": "node index"
+    "start": "node index.js",
+    "format": "prettier . --write"
   },
-  "author": "CrazyOptimist <crazyoptimist@mail.com>",
+  "author": "crazyoptimist <me@crazyoptimist.net>",
   "license": "MIT",
   "dependencies": {
-    "aws-sdk": "^2.828.0",
-    "cron": "^1.8.2",
-    "dotenv": "^8.2.0",
+    "aws-sdk": "^2.1341.0",
+    "cron": "^2.3.0",
+    "dotenv": "^16.0.3",
     "lodash": "^4.17.21",
-    "minimist": "^1.2.5"
+    "minimist": "^1.2.8"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/crazyoptimist/mongo-auto-backup.git"
+    "url": "https://github.com/crazyoptimist/backup-mongo.git"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.6"
   }
 }
