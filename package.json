@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "format": "prettier . --write"
+    "format": "prettier . --write",
+    "prepare": "husky install"
   },
   "author": "crazyoptimist <me@crazyoptimist.net>",
   "license": "MIT",
@@ -21,6 +22,13 @@
     "url": "https://github.com/crazyoptimist/backup-mongo.git"
   },
   "devDependencies": {
-    "prettier": "^2.8.6"
+    "lint-staged": "^13.2.0",
+    "prettier": "^2.8.6",
+    "husky": "^8.0.0"
+  },
+  "lint-staged": {
+    "*.{js,ts,json,md,html}": [
+      "prettier --write"
+    ]
   }
 }
