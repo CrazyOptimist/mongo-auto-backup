@@ -18,7 +18,7 @@ if (config.app.runOnece) {
   runBackup();
   process.exit(0);
 } else {
-  console.log('Starting in CRON');
+  console.log('Running in CRON mode');
   const job = new CronJob(config.app.cronExpression, runBackup, null, true, config.app.timezone);
 
   job.start();
